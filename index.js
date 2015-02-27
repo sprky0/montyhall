@@ -1,5 +1,13 @@
 (function(){
 
+	var testCount = 5000000;
+	var area = document.getElementById('main');
+
+	function log(s) {
+		area.innerHTML = area.innerHTML + "\n" + s;
+		console.log(s);
+	}
+
 	// run a game, where the player stays or switches
 	function game(swit, boardlen) {
 
@@ -74,8 +82,13 @@
 
 	}
 
-	var result = run(2000000, 3);
 
-	console.log(result);
+
+	log("Running " + testCount + " tests");
+
+	var result = run(testCount, 3);
+
+	log("Players who stayed were correct " + (result.stays * 100) + "% of the time");
+	log("Players who switched were correct " + (result.switches * 100) + "% of the time");
 
 })();
